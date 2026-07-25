@@ -3,7 +3,7 @@ app = "myproxy"   # change this
 [build]
   dockerfile = "Dockerfile"
 
-[[services]]
+[services]
   internal_port = 8888
   protocol = "tcp"
 
@@ -11,6 +11,6 @@ app = "myproxy"   # change this
     hard_limit = 25
     soft_limit = 20
 
-  [[services.ports]]
+  [services.ports]
     port = 8888
     handlers = ["tls", "http"]
