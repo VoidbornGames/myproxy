@@ -1,13 +1,10 @@
-# fly.toml app configuration file generated for myproxy-r9fwlq
-# Corrected for TCP proxy
-
 app = 'myproxy-r9fwlq'
 primary_region = 'iad'
 
 [build]
 
 [[services]]
-  internal_port = 8888
+  internal_port = 3128
   protocol = "tcp"
 
   [services.concurrency]
@@ -16,7 +13,7 @@ primary_region = 'iad'
     type = "connections"
 
   [[services.ports]]
-    port = 8888
+    port = 3128
     handlers = ["tls", "http"]
 
 [[vm]]
