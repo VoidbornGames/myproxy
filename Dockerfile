@@ -1,5 +1,5 @@
-FROM alpine:latest
-RUN apk add --no-cache tinyproxy
-COPY tinyproxy.conf /etc/tinyproxy/tinyproxy.conf
-EXPOSE 8888
-CMD ["tinyproxy", "-d"]
+FROM ubuntu:22.04
+RUN apt-get update && apt-get install -y squid
+COPY squid.conf /etc/squid/squid.conf
+EXPOSE 3128
+CMD ["squid", "-N"]
