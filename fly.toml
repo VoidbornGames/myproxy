@@ -1,12 +1,18 @@
-User tinyproxy
-Group tinyproxy
-Port 8888
-Timeout 600
-DefaultErrorFile /usr/share/tinyproxy/default.html
-StatFile /usr/share/tinyproxy/stats.html
-LogFile /var/log/tinyproxy/tinyproxy.log
-LogLevel Info
-PidFile /run/tinyproxy/tinyproxy.pid
-MaxClients 100
-Allow 0.0.0.0/0
-ViaProxyName "tinyproxy"
+app = "your-proxy-name"   # change this to a unique name
+primary_region = "iad"    # choose a region close to you
+
+[build]
+  dockerfile = "Dockerfile"
+
+[[services]]
+  internal_port = 8888
+  protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 100
+    soft_limit = 50
+    type = "connections"
+
+  [[services.ports]]
+    port = 8888
+    handlers = ["tls", "http"]   # this enables HTTPS on the public endpoint
