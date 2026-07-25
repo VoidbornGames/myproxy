@@ -1,4 +1,4 @@
-app = "your-proxy-name"   # change this to a unique name
+app = "myproxy-r9fwlq"   # change this to a unique name
 primary_region = "iad"    # choose a region close to you
 
 [build]
