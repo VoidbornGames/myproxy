@@ -1,16 +1,12 @@
-app = "hello-fly-2vtwpg"
-primary_region = "iad"
-
-[http_service]
-auto_start_machines = true
-auto_stop_machines = true
-force_https = true
-internal_port = 8_080
-min_machines_running = 0
-processes = [ "app" ]
-
-[[vm]]
-cpu_kind = "shared"
-cpus = 1
-memory = "1gb"
-memory_mb = 256
+User tinyproxy
+Group tinyproxy
+Port 8888
+Timeout 600
+DefaultErrorFile /usr/share/tinyproxy/default.html
+StatFile /usr/share/tinyproxy/stats.html
+LogFile /var/log/tinyproxy/tinyproxy.log
+LogLevel Info
+PidFile /run/tinyproxy/tinyproxy.pid
+MaxClients 100
+Allow 0.0.0.0/0
+ViaProxyName "tinyproxy"
